@@ -4,9 +4,9 @@ Vamos a realizar el clásico juego del ahorcado, versión digital, para poder ju
 
 ## Integrantes del equipo
 
-Ruth de la Fuente Martín--> ruuthdlf
-Silvia Cantero Casares--> silviaacc
-María Ballard Conde--> mballard02
+- Ruth de la Fuente Martín--> ruuthdlf
+- Silvia Cantero Casares--> silviaacc
+- María Ballard Conde--> mballard02
 
 ## Objetivos del trabajo
 
