@@ -1,7 +1,17 @@
 #include<stdio.h>
+#include<string.h>
+
+struct datos {
+    char palabra[100];
+    int nivel;
+};
 
 int main () {
 	char opcion, modo, solitario, equipos, equipo1, equipo2,A,B;
+	struct datos palabras[9]={{"lujo",1},{"hoja", 1}, {"gato", 1}, {"abrigo", 2}, {"cable", 2},{"reloj",2},{"coleta",3}, {"sarten", 3}, {"cuadro",3}};
+	char palabraOriginal[100];
+	char letra;
+	int posicion=0, i,palabraCompleta=1,letraEncontrada=0,j;
 
 	// Menu de entrada
 	printf ("----------AHORCADO----------\n");
@@ -40,8 +50,60 @@ int main () {
 
 										break;
 									case 'B' :
-										printf("Aqui empieza la programacion del solitario");
-										fflush(stdin);
+										
+for(i=0;i<9;i++){
+    printf("------------Nivel %d----------\n",palabras[i].nivel);
+    for(j = 0; j<strlen(palabras[i].palabra); j++) {
+        palabraOriginal[j] = palabras[i].palabra[j];
+        palabras[i].palabra[j]='_';
+
+    }
+    do {
+        palabraCompleta=1;
+
+        do {
+            printf("Introduzca una letra:\n");
+            fflush(stdin);
+            scanf("%c", &letra);
+
+            for(j = 0; j<strlen(palabras[i].palabra);j++) {
+                if(letra == palabraOriginal[j]) {
+                    posicion=j;
+                    letraEncontrada=1;
+                }
+               
+            }
+            if(letraEncontrada == 0) {
+                printf("%s\n", palabras);
+            }
+
+        } while(letraEncontrada==0);
+        palabras[i].palabra[posicion]=palabraOriginal[posicion];
+        printf("%s\n", palabras[i].palabra);
+        for(j= 0; j<strlen(palabras[i].palabra); j++) {
+            if(palabras[i].palabra[j]=='_') {
+                palabraCompleta = 0;
+            }
+        } 
+        } while(palabraCompleta == 0);
+
+            printf("enhorabuena has acertado!\n");
+            
+
+
+}
+    
+}
+										
+										
+										
+
+
+
+
+
+
+										
 										break;
 									default:
 										printf("La opcion es incorrecta\n");
