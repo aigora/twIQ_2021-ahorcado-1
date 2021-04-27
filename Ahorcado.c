@@ -12,6 +12,16 @@ int main () {
 	char palabraOriginal[100];
 	char letra;
 	int posicion=0, i,palabraCompleta=1,letraEncontrada=0,j;
+	
+	struct datos palabras[100];
+	char palabraOriginal[100];
+	char letra;
+	int posicion=0;
+	int i,j,k;
+	int palabraCompleta=1;
+	int letraEncontrada=0;
+	int fallos,acertado;
+	char letras[100];
 
 	// Menu de entrada
 	printf ("----------AHORCADO----------\n");
@@ -51,59 +61,47 @@ int main () {
 										break;
 									case 'B' :
 										
-for(i=0;i<9;i++){
-    printf("------------Nivel %d----------\n",palabras[i].nivel);
-    for(j = 0; j<strlen(palabras[i].palabra); j++) {
-        palabraOriginal[j] = palabras[i].palabra[j];
-        palabras[i].palabra[j]='_';
+										for(i=0;i<9;i++){
+										    printf("------------Nivel %d----------\n",palabras[i].nivel);
+										    for(j = 0; j<strlen(palabras[i].palabra); j++) {
+											palabraOriginal[j] = palabras[i].palabra[j];
+											palabras[i].palabra[j]='_';
 
-    }
-    do {
-        palabraCompleta=1;
+										    }
+										    do {
+											palabraCompleta=1;
 
-        do {
-            printf("Introduzca una letra:\n");
-            fflush(stdin);
-            scanf("%c", &letra);
+											do {
+											    printf("Introduzca una letra:\n");
+											    fflush(stdin);
+											    scanf("%c", &letra);
 
-            for(j = 0; j<strlen(palabras[i].palabra);j++) {
-                if(letra == palabraOriginal[j]) {
-                    posicion=j;
-                    letraEncontrada=1;
-                }
-               
-            }
-            if(letraEncontrada == 0) {
-                printf("%s\n", palabras);
-            }
+											    for(j = 0; j<strlen(palabras[i].palabra);j++) {
+												if(letra == palabraOriginal[j]) {
+												    posicion=j;
+												    letraEncontrada=1;
+												}
 
-        } while(letraEncontrada==0);
-        palabras[i].palabra[posicion]=palabraOriginal[posicion];
-        printf("%s\n", palabras[i].palabra);
-        for(j= 0; j<strlen(palabras[i].palabra); j++) {
-            if(palabras[i].palabra[j]=='_') {
-                palabraCompleta = 0;
-            }
-        } 
-        } while(palabraCompleta == 0);
+											    }
+											    if(letraEncontrada == 0) {
+												printf("%s\n", palabras);
+											    }
 
-            printf("enhorabuena has acertado!\n");
-            
+											} while(letraEncontrada==0);
+											palabras[i].palabra[posicion]=palabraOriginal[posicion];
+											printf("%s\n", palabras[i].palabra);
+											for(j= 0; j<strlen(palabras[i].palabra); j++) {
+											    if(palabras[i].palabra[j]=='_') {
+												palabraCompleta = 0;
+											    }
+											} 
+											} while(palabraCompleta == 0);
 
+											    printf("enhorabuena has acertado!\n");
+										}
 
-}
-    
-}
-										
-										
-										
+										}
 
-
-
-
-
-
-										
 										break;
 									default:
 										printf("La opcion es incorrecta\n");
@@ -128,7 +126,103 @@ for(i=0;i<9;i++){
 									printf("Introduce el nombre del equipo 2\n");
 									fflush(stdin);
 									scanf("%c", &equipo2);
-									printf("Aqui empezaria la programacion del juego por equipos\n");
+									for(k=0; k<3; k++) {
+
+										printf("EQUIPO 1\n");
+										printf("introduce una palabra\n");
+										scanf("%s",palabras[0].palabra);
+										printf("EQUIPO 2\n");
+										printf("introduce una palabra\n");
+										scanf("%s",palabras[1].palabra);
+
+										for(i=0; i<2; i++) 
+										{
+											fallos=0;
+											acertado=0;
+
+											printf("------------Ronda %d----------\n",i+1);
+											for(j = 0; j<strlen(palabras[i].palabra); j++) 
+											{
+												palabraOriginal[j] = palabras[i].palabra[j];
+												palabras[i].palabra[j]='_';
+											}
+											do 
+											{
+												palabraCompleta=1;
+
+												do 
+												{
+													letraEncontrada=0;
+													printf("Introduzca una letra:\n");
+													fflush(stdin);
+													scanf("%c", &letra);
+
+													for(j = 0; j<strlen(palabras[i].palabra); j++) 
+													{
+														if(letra == palabraOriginal[j]) 
+														{
+															letras[j]=1;
+															letraEncontrada=1;
+															acertado++;
+														}
+													}
+
+													if(letraEncontrada == 0) 	
+													{
+														for(j = 0; j<strlen(palabras[i].palabra); j++)
+														{
+															printf("\t%c",palabras[i].palabra[j]);			
+														}
+
+														printf("\n\n");
+														fallos++;
+													}
+													printf("Letras Acertadas: %d\n",acertado);
+
+													printf("Oportunidades Restantes: %d\n\n",7-fallos);
+												} while(letraEncontrada==0 && fallos != 7);
+
+												if(letraEncontrada == 1) 
+												{
+													for(j = 0; j<strlen(palabras[i].palabra); j++)
+													{
+														if(letras[j]) palabras[i].palabra[j]=palabraOriginal[j];		
+													} 
+
+													for(j = 0; j<strlen(palabras[i].palabra); j++)
+													{
+														printf("\t%c",palabras[i].palabra[j]);			
+													} 
+
+													printf("\n\n");
+
+													for(j= 0; j<strlen(palabras[i].palabra); j++) 
+													{
+														if(palabras[i].palabra[j]=='_') 
+														{
+															palabraCompleta = 0;
+														}
+													}
+												} 
+											} while(palabraCompleta == 0 && fallos!=7);
+
+											for(j = 0; j<strlen(palabras[i].palabra); j++)
+											{
+												letras[j] = 0;		
+											}
+
+											if(fallos == 7) 
+											{
+												printf("GAME OVER\n");
+											} 
+											else 
+											{
+												printf("¡Enhorabuena has acertado!\n");
+											}
+										}
+									}
+								return 0;
+								}
 									break;
 								default:
 									printf("La opcion es incorrecta\n");
