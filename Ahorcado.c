@@ -4,24 +4,30 @@
 struct datos {
     char palabra[100];
     int nivel;
+    int puntos;
+};
+struct equipo {
+	char nombre[100];
+	int sumaPuntos;
 };
 
 int main () {
 	char opcion, modo, solitario, equipos, equipo1, equipo2,A,B;
-	struct datos palabras[9]={{"lujo",1},{"hoja", 1}, {"gato", 1}, {"abrigo", 2}, {"cable", 2},{"reloj",2},{"coleta",3}, {"sarten", 3}, {"cuadro",3}};
-	char palabraOriginal[100];
-	char letra;
-	int posicion=0, i,palabraCompleta=1,letraEncontrada=0,j;
-	
 	struct datos palabras[100];
+	struct equipo equipos[100];
 	char palabraOriginal[100];
-	char letra;
+	char palabra[100];
+	char letra,nombre;
 	int posicion=0;
-	int i,j,k;
+	int i,j,k,l,r;
 	int palabraCompleta=1;
 	int letraEncontrada=0;
 	int fallos,acertado;
+	int equipoJugador,puntos,sumaPuntos;
 	char letras[100];
+	FILE * fentrada;
+	FILE * fsalida;
+	FILE * fpuntos;
 
 	// Menu de entrada
 	printf ("----------AHORCADO----------\n");
@@ -56,12 +62,29 @@ int main () {
 								scanf("%c", &solitario);
 								switch(solitario) {
 									case 'A' :
-										printf("-Para comenzar introduzca su usuario\n-A continuacion le aparecera una palabra que tiene q adivinar\n-Recuerda q solo tiene siete intentos\n-Se realizaran 3 rondas de 5 palabras\n-Seras el ganador si aciertas todas\n");
+										printf("-Para comenzar introduzca su usuario\n-A continuacion le aparecera una palabra que tiene que adivinar\n-Recuerda que solo tiene ocho intentos\n-Se realizaran rondas de palabras con diferentes niveles de dificultad\n-Seras el ganador si aciertas todas\n");
 
 										break;
 									case 'B' :
 										
+										fentrada=fopen("palabras.txt", "r");
+
+										if(fentrada==NULL) {
+											printf("ERROR: el fichero no se ha encontrado\n");
+											return 0;
+										}
+
+										i=0;
+										while(fscanf(fentrada,"%s %d %f",palabras[i].palabra,&palabras[i].nivel,&palabras[i].puntos)!=EOF) {
+											i++;
+										}
+										fclose(fentrada);
+										printf("Introduzca su nombre\n");
+										fflush(stdin);
+										scanf("%s",&nombre);
 										for(i=0;i<9;i++){
+										    fallos=0;
+										    acertado=0;
 										    printf("------------Nivel %d----------\n",palabras[i].nivel);
 										    for(j = 0; j<strlen(palabras[i].palabra); j++) {
 											palabraOriginal[j] = palabras[i].palabra[j];
@@ -72,40 +95,118 @@ int main () {
 											palabraCompleta=1;
 
 											do {
+											    letraEncontrada=0;
 											    printf("Introduzca una letra:\n");
 											    fflush(stdin);
 											    scanf("%c", &letra);
 
 											    for(j = 0; j<strlen(palabras[i].palabra);j++) {
 												if(letra == palabraOriginal[j]) {
-												    posicion=j;
+												    letras[j]=1;
 												    letraEncontrada=1;
+												    acertado++;
 												}
 
 											    }
 											    if(letraEncontrada == 0) {
-												printf("%s\n", palabras);
+												for(j = 0; j<strlen(palabras[i].palabra); j++) {
+															printf("\t%c",palabras[i].palabra[j]);
+														}
+														printf("\n\n");
+														fallos++;
 											    }
+													printf("Letras Acertadas: %d\n",acertado);
 
-											} while(letraEncontrada==0);
-											palabras[i].palabra[posicion]=palabraOriginal[posicion];
-											printf("%s\n", palabras[i].palabra);
+			          printf("\n");
+					switch(fallos){
+						
+					case 0: printf(" \n     ____\n    |    |\n    |\n    |\n    |\n    |\n  __|__  "); break;	
+					
+			        case 1: printf(" \n     ____\n    |    |\n    |    O\n    |\n    |\n    |\n    |\n  __|__  "); break;
+			        
+			        case 2: printf("\n     ____\n    |    |\n    |    O\n    |    |\n    |\n    |\n    |\n  __|__  "); break;
+			        
+			        case 3: printf("\n     ____\n    |    |\n    |    O\n    |   /|\n    |\n    |\n    |\n  __|__  ");break;
+			        
+			        case 4: {
+					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+					      printf("\\\n");
+					      printf("    |\n    |\n    |\n  __|__");
+						  }break;
+					
+					case 5: {
+					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+					      printf("\\\n");
+					      printf("    |    |\n    |\n    |\n  __|__");
+						  }break;	  
+				    
+			        
+			        case 6: {
+					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+					      printf("\\\n");
+					      printf("    |    |\n    |   /\n    |\n    |\n  __|__");
+						  }break;
+						  
+					case 7: {
+					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+					      printf("\\\n");
+					      printf("    |    |\n    |   /");
+					      printf(" \\\n");
+					      printf("    |\n    |\n  __|__");
+						  }break;
+	            	}
+						  	  
+			        printf("Oportunidades Restantes: %d\n",8-fallos);
+			        printf("\n\n");
+
+											} while(letraEncontrada==0 && fallos != 8);
+											if(letraEncontrada == 1) {
+				                                                        for(j = 0; j<strlen(palabras[i].palabra); j++) {
+					                                                if(letras[j]) {
+						                                           palabras[i].palabra[j]=palabraOriginal[j];
+					                                                  }
+
+					                                                 printf("\t%c",palabras[i].palabra[j]);
+				                                                         }
+				                                                         printf("\n\n");
 											for(j= 0; j<strlen(palabras[i].palabra); j++) {
 											    if(palabras[i].palabra[j]=='_') {
 												palabraCompleta = 0;
 											    }
 											} 
-											} while(palabraCompleta == 0);
-
-											    printf("enhorabuena has acertado!\n");
 										}
+											} while(palabraCompleta == 0 && fallos!=8);
+											for(j=0; j<strlen(palabras[i].palabra); j++) {
+			letras[j]=0;
+		}
 
-										}
+		if(fallos == 8) {
+			printf("GAME OVER\n");
+		} else {
+			printf("¡Enhorabuena has acertado!\n");
+			sumaPuntos+=palabras[i].puntos;
+		}
 
-										break;
+	}
+	printf("Has obtenido %d puntos\n",sumaPuntos);
+	fsalida=fopen("salida.txt","w");
+	if(fsalida== NULL) {
+		printf("Error en la apertura del fichero\n");
+		return 0;
+	}
+	fprintf(fsalida,"%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
+
+	fclose(fsalida);
+	return 0;
 									default:
-										printf("La opcion es incorrecta\n");
-								}
+										printf("la opcion es incorrecta\n");
+}
+
+											 
+
+										
+									
+								
 							} while(solitario!='B');
 							break;
 						case 'B' :
@@ -116,48 +217,54 @@ int main () {
 							scanf("%c", &equipos);
 							switch(equipos) {
 								case 'A' :
-									printf("-Para comenzar introduzca el nombre de ambos equipos\n-A continuacion les iran apareciendo palabras elegidas por el otro equipo que tendran q adivinar\n-Recordad q solo teneis siete intentos\n-Se realizaran 3 rondas de 5 palabras\n-El equipo que acierte mas palabras sera el ganador\n");
+									printf("-Para comenzar introduzca el nombre de ambos equipos\n-A continuacion les iran apareciendo palabras elegidas por el otro equipo que tendran que adivinar\n-Recordad que solo teneis ocho intentos\n-Se realizaran 3 rondas \n-El equipo que acierte mas palabras sera el ganador\n");
 
 									break;
 								case 'B' :
 									printf("Introduce el nombre del equipo 1\n");
 									fflush(stdin);
-									scanf("%c", &equipo1);
+									scanf("%s",equipos[0].nombre);
 									printf("Introduce el nombre del equipo 2\n");
 									fflush(stdin);
-									scanf("%c", &equipo2);
+									scanf("%s",equipos[1].nombre);
 									for(k=0; k<3; k++) {
+											printf("------------Ronda %d----------\n",k);
 
-										printf("EQUIPO 1\n");
-										printf("introduce una palabra\n");
-										scanf("%s",palabras[0].palabra);
-										printf("EQUIPO 2\n");
-										printf("introduce una palabra\n");
-										scanf("%s",palabras[1].palabra);
+										
+										for(l=0; l<2; l++) {
+												if(l==0) {
+													equipoJugador= l+1;
+												} else if(l==1) {
+													equipoJugador= l-1;
+												}
+												printf("%s\n",equipos[l].nombre);
+												printf("introduce una palabra\n");
+												fflush(stdin);
+												scanf("%s",palabra);
+												puntos = 10;
 
-										for(i=0; i<2; i++) 
-										{
+										
 											fallos=0;
 											acertado=0;
 
-											printf("------------Ronda %d----------\n",i+1);
-											for(j = 0; j<strlen(palabras[i].palabra); j++) 
-											{
-												palabraOriginal[j] = palabras[i].palabra[j];
-												palabras[i].palabra[j]='_';
+											for(j = 0; j<strlen(palabra); j++) {
+											
+												palabraOriginal[j] = palabra[j];
+												palabra[j]='_';
 											}
-											do 
-											{
+											do {
+											
 												palabraCompleta=1;
 
-												do 
-												{
-													letraEncontrada=0;
-													printf("Introduzca una letra:\n");
-													fflush(stdin);
-													scanf("%c", &letra);
+												do {
+												
+														letraEncontrada=0;
+														printf("%s\n",equipos[equipoJugador].nombre);
+														printf("Introduzca una letra:\n");
+														fflush(stdin);
+														scanf("%c", &letra);
 
-													for(j = 0; j<strlen(palabras[i].palabra); j++) 
+													for(j = 0; j<strlen(palabra); j++) 
 													{
 														if(letra == palabraOriginal[j]) 
 														{
@@ -167,76 +274,125 @@ int main () {
 														}
 													}
 
-													if(letraEncontrada == 0) 	
-													{
-														for(j = 0; j<strlen(palabras[i].palabra); j++)
-														{
-															printf("\t%c",palabras[i].palabra[j]);			
+													if(letraEncontrada == 0) {	
+													
+														for(j = 0; j<strlen(palabra); j++){
+														
+															printf("\t%c",palabra[j]);			
 														}
 
 														printf("\n\n");
 														fallos++;
 													}
 													printf("Letras Acertadas: %d\n",acertado);
+													 printf("\n");
+					switch(fallos){
+						
+					case 0: printf(" \n     ____\n    |    |\n    |\n    |\n    |\n    |\n  __|__  "); break;	
+					
+			        case 1: printf(" \n     ____\n    |    |\n    |    O\n    |\n    |\n    |\n    |\n  __|__  "); break;
+			        
+			        case 2: printf("\n     ____\n    |    |\n    |    O\n    |    |\n    |\n    |\n    |\n  __|__  "); break;
+			        
+			        case 3: printf("\n     ____\n    |    |\n    |    O\n    |   /|\n    |\n    |\n    |\n  __|__  ");break;
+			        
+			        case 4: {
+					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+					      printf("\\\n");
+					      printf("    |\n    |\n    |\n  __|__");
+						  }break;
+					
+					case 5: {
+					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+					      printf("\\\n");
+					      printf("    |    |\n    |\n    |\n  __|__");
+						  }break;	  
+				    
+			        
+			        case 6: {
+					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+					      printf("\\\n");
+					      printf("    |    |\n    |   /\n    |\n    |\n  __|__");
+						  }break;
+						  
+					case 7: {
+					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+					      printf("\\\n");
+					      printf("    |    |\n    |   /");
+					      printf(" \\\n");
+					      printf("    |\n    |\n  __|__");
+						  }break;
+	            	}
+						  	  
+			        printf("Oportunidades Restantes: %d\n",8-fallos);
+			        printf("\n\n");
 
-													printf("Oportunidades Restantes: %d\n\n",7-fallos);
-												} while(letraEncontrada==0 && fallos != 7);
+													
+												} while(letraEncontrada==0 && fallos != 8);
 
-												if(letraEncontrada == 1) 
-												{
-													for(j = 0; j<strlen(palabras[i].palabra); j++)
-													{
-														if(letras[j]) palabras[i].palabra[j]=palabraOriginal[j];		
+												if(letraEncontrada == 1) {
+												
+													for(j = 0; j<strlen(palabra); j++) {
+													
+														if(letras[j]) {
+														palabra[j]=palabraOriginal[j];		
 													} 
+															printf("\t%c",palabra[j]);
+					                                                                                 }
+					                                                                                printf("\n\n");	
 
-													for(j = 0; j<strlen(palabras[i].palabra); j++)
-													{
-														printf("\t%c",palabras[i].palabra[j]);			
-													} 
-
-													printf("\n\n");
-
-													for(j= 0; j<strlen(palabras[i].palabra); j++) 
-													{
-														if(palabras[i].palabra[j]=='_') 
-														{
+													for(j= 0; j<strlen(palabra); j++) {
+													
+														if(palabra[j]=='_') {
 															palabraCompleta = 0;
 														}
 													}
 												} 
-											} while(palabraCompleta == 0 && fallos!=7);
+											} while(palabraCompleta == 0 && fallos!=8);
 
-											for(j = 0; j<strlen(palabras[i].palabra); j++)
-											{
+											for(j = 0; j<strlen(palabra); j++){ 
 												letras[j] = 0;		
 											}
 
-											if(fallos == 7) 
-											{
+											if(fallos == 7) {
 												printf("GAME OVER\n");
 											} 
 											else 
 											{
 												printf("¡Enhorabuena has acertado!\n");
+												equipos[equipoJugador].sumaPuntos+=puntos;
 											}
 										}
 									}
+									fpuntos=fopen("puntosequipos.txt","w");
+									if(fpuntos== NULL) {
+										printf("Error en la apertura del fichero\n");
+										return 0;
+										}
+										for(r=0; r<2; r++) {
+												printf("Has obtenido %d puntos\n",equipos[r].sumaPuntos);
+												fprintf(fpuntos,"%s has obtenido:%d ptos de un total de 90 puntos",equipos[r].nombre,equipos[r].sumaPuntos);
+												}
+									
+	                                                                                       fclose(fpuntos);
+	
 								return 0;
-								}
-									break;
 								default:
 									printf("La opcion es incorrecta\n");
-							}
-							} while(equipos!='B');
+								}
+									
+								
+							
+							} while(modoEquipos!='B');
 							break;
-						default:
+						
 							printf("La opcion es incorrecta\n");
 							
 					}
 				} while((modo!='A')&& (modo!='B'));
 				break;
 				case 'B' :
-				printf("Gracias por jugar, hasta pronto!");
+				printf("Gracias por jugar, ¡hasta pronto!");
 				break;
 			default:
 				printf("La opcion es incorrecta\n");
