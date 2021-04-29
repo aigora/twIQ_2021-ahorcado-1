@@ -1,0 +1,9 @@
+lujo 1 5
+hoja 1 5
+gato 1 5
+abrigo 2 10
+reloj 2  10
+cable 2  10
+coleta 3 15
+sarten 3 15
+cuadro 3 15
