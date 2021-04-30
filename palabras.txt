@@ -21,10 +21,10 @@ brazo 2 10
 coleta 3 15
 sarten 3 15
 cuadro 3 15
-lengua 3 10
-cometa 3 10
-alarma 3 10
-hervir 3 10
-españa 3 10
-chicle 3 10
-grumo 3 10
+lengua 3 15
+cometa 3 15
+alarma 3 15
+hervir 3 15
+españa 3 15
+chicle 3 15
+grumo 3 15
