@@ -12,7 +12,7 @@ struct equipo {
 };
 
 int main () {
-	char opcion, modo, solitario, equipos, equipo1, equipo2,A,B;
+	char opcion, modo, solitario, modoEquipos, equipo1, equipo2,A,B;
 	struct datos palabras[100];
 	struct equipo equipos[100];
 	char palabraOriginal[100];
@@ -214,8 +214,8 @@ int main () {
 							printf("A - Instrucciones\n");
 							printf("B - EMPEZAR\n");
 							fflush(stdin);
-							scanf("%c", &equipos);
-							switch(equipos) {
+							scanf("%c", &modoEquipos);
+							switch(modoEquipos) {
 								case 'A' :
 									printf("-Para comenzar introduzca el nombre de ambos equipos\n-A continuacion les iran apareciendo palabras elegidas por el otro equipo que tendran que adivinar\n-Recordad que solo teneis ocho intentos\n-Se realizaran 3 rondas \n-El equipo que acierte mas palabras sera el ganador\n");
 
