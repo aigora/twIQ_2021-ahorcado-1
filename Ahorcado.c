@@ -354,7 +354,7 @@ int main () {
 												letras[j] = 0;		
 											}
 
-											if(fallos == 7) {
+											if(fallos == 8) {
 												printf("GAME OVER\n");
 											} 
 											else 
