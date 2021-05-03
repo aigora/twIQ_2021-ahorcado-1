@@ -23,6 +23,7 @@ int main () {
 	int palabraCompleta=1;
 	int letraEncontrada=0;
 	int fallos,acertado;
+	int repetida=0;
 	int equipoJugador,puntos,sumaPuntos;
 	char letras[100];
 	FILE * fentrada;
@@ -104,7 +105,11 @@ int main () {
 												if(letra == palabraOriginal[j]) {
 												    letras[j]=1;
 												    letraEncontrada=1;
-												    acertado++;
+												    if(palabras[i].palabr[j] !=letra) {
+												    	acertado++;
+												    	} else { 
+														repetida=1;
+													}
 												}
 
 											    }
@@ -115,7 +120,11 @@ int main () {
 														printf("\n\n");
 														fallos++;
 											    }
-													printf("Letras Acertadas: %d\n",acertado);
+												printf("\n");
+												if (repetida==1) {
+													printf("Ya has puesto esa letra\n");
+												}
+												printf("Letras Acertadas: %d\n",acertado);
 
 			          printf("\n");
 					switch(fallos){
@@ -157,6 +166,7 @@ int main () {
 	            	}
 						  	  
 			        printf("Oportunidades Restantes: %d\n",8-fallos);
+				repetida=0;
 			        printf("\n\n");
 
 											} while(letraEncontrada==0 && fallos != 8);
@@ -270,7 +280,11 @@ int main () {
 														{
 															letras[j]=1;
 															letraEncontrada=1;
+															if(palabra[j] !=letra) {
 															acertado++;
+															} else {
+																repetida = 1
+															}
 														}
 													}
 
@@ -283,6 +297,10 @@ int main () {
 
 														printf("\n\n");
 														fallos++;
+													}
+													printf("\n"); 
+													if(repetida == 1) {
+														printf("Ya has puesto esa letra \n"); 
 													}
 													printf("Letras Acertadas: %d\n",acertado);
 													 printf("\n");
@@ -325,6 +343,7 @@ int main () {
 	            	}
 						  	  
 			        printf("Oportunidades Restantes: %d\n",8-fallos);
+				repetida=0;
 			        printf("\n\n");
 
 													
