@@ -29,7 +29,7 @@ int main () {
 	int equipoJugador,puntos,sumaPuntos;
 	char letras[100];
 	FILE * fentrada;
-	FILE * fsalida;
+	FILE * fsalida; 
 	FILE * fpuntos;
 
 	// Menu de entrada
