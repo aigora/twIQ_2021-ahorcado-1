@@ -11,6 +11,8 @@ struct equipo {
 	int sumaPuntos;
 };
 
+void dibujo (int fallos);
+
 int main () {
 	char opcion, modo, solitario, modoEquipos, equipo1, equipo2,A,B;
 	struct datos palabras[100];
@@ -92,6 +94,7 @@ int main () {
 											palabras[i].palabra[j]='_';
 
 										    }
+											
 										    do {
 											palabraCompleta=1;
 
@@ -105,7 +108,7 @@ int main () {
 												if(letra == palabraOriginal[j]) {
 												    letras[j]=1;
 												    letraEncontrada=1;
-												    if(palabras[i].palabr[j] !=letra) {
+												    if(palabras[i].palabra[j] !=letra) {
 												    	acertado++;
 												    	} else { 
 														repetida=1;
@@ -126,97 +129,56 @@ int main () {
 												}
 												printf("Letras Acertadas: %d\n",acertado);
 
-			          printf("\n");
-					switch(fallos){
-						
-					case 0: printf(" \n     ____\n    |    |\n    |\n    |\n    |\n    |\n  __|__  "); break;	
-					
-			        case 1: printf(" \n     ____\n    |    |\n    |    O\n    |\n    |\n    |\n    |\n  __|__  "); break;
-			        
-			        case 2: printf("\n     ____\n    |    |\n    |    O\n    |    |\n    |\n    |\n    |\n  __|__  "); break;
-			        
-			        case 3: printf("\n     ____\n    |    |\n    |    O\n    |   /|\n    |\n    |\n    |\n  __|__  ");break;
-			        
-			        case 4: {
-					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
-					      printf("\\\n");
-					      printf("    |\n    |\n    |\n  __|__");
-						  }break;
-					
-					case 5: {
-					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
-					      printf("\\\n");
-					      printf("    |    |\n    |\n    |\n  __|__");
-						  }break;	  
-				    
-			        
-			        case 6: {
-					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
-					      printf("\\\n");
-					      printf("    |    |\n    |   /\n    |\n    |\n  __|__");
-						  }break;
-						  
-					case 7: {
-					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
-					      printf("\\\n");
-					      printf("    |    |\n    |   /");
-					      printf(" \\\n");
-					      printf("    |\n    |\n  __|__");
-						  }break;
-	            	}
-						  	  
-			        printf("Oportunidades Restantes: %d\n",8-fallos);
-				repetida=0;
-			        printf("\n\n");
+												printf("\n");
+
+												printf("Oportunidades Restantes: %d\n",8-fallos);
+												repetida=0;
+												printf("\n\n");
+												
+												dibujo(fallos);
 
 											} while(letraEncontrada==0 && fallos != 8);
 											if(letraEncontrada == 1) {
 				                                                        for(j = 0; j<strlen(palabras[i].palabra); j++) {
 					                                                if(letras[j]) {
-						                                           palabras[i].palabra[j]=palabraOriginal[j];
+						                                         palabras[i].palabra[j]=palabraOriginal[j];
 					                                                  }
-
-					                                                 printf("\t%c",palabras[i].palabra[j]);
+					                                             	 printf("\t%c",palabras[i].palabra[j]);
 				                                                         }
 				                                                         printf("\n\n");
 											for(j= 0; j<strlen(palabras[i].palabra); j++) {
 											    if(palabras[i].palabra[j]=='_') {
 												palabraCompleta = 0;
-											    }
+											    	}
 											} 
-										}
+											}
 											} while(palabraCompleta == 0 && fallos!=8);
 											for(j=0; j<strlen(palabras[i].palabra); j++) {
-			letras[j]=0;
-		}
+											letras[j]=0;
+										}
 
-		if(fallos == 8) {
-			printf("GAME OVER\n");
-		} else {
-			printf("¡Enhorabuena has acertado!\n");
-			sumaPuntos+=palabras[i].puntos;
-		}
+										if(fallos == 8) {
+											printf("GAME OVER\n");
+										} else {
+											printf("¡Enhorabuena has acertado!\n");
+											sumaPuntos+=palabras[i].puntos;
+										}
 
-	}
-	printf("Has obtenido %d puntos\n",sumaPuntos);
-	fsalida=fopen("salida.txt","w");
-	if(fsalida== NULL) {
-		printf("Error en la apertura del fichero\n");
-		return 0;
-	}
-	fprintf(fsalida,"%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
+									}
+									printf("Has obtenido %d puntos\n",sumaPuntos);
+									fsalida=fopen("salida.txt","w");
+									if(fsalida== NULL) {
+										printf("Error en la apertura del fichero\n");
+										return 0;
+									}
+									fprintf(fsalida,"%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
 
-	fclose(fsalida);
-	return 0;
+									fclose(fsalida);
+									return 0;
 									default:
 										printf("la opcion es incorrecta\n");
-}
-
-											 
-
-										
+									}		
 									
-								
 							} while(solitario!='B');
 							break;
 						case 'B' :
@@ -283,7 +245,7 @@ int main () {
 															if(palabra[j] !=letra) {
 															acertado++;
 															} else {
-																repetida = 1
+																repetida = 1;
 															}
 														}
 													}
@@ -304,47 +266,13 @@ int main () {
 													}
 													printf("Letras Acertadas: %d\n",acertado);
 													 printf("\n");
-					switch(fallos){
-						
-					case 0: printf(" \n     ____\n    |    |\n    |\n    |\n    |\n    |\n  __|__  "); break;	
+													
+													dibujo(fallos);
 					
-			        case 1: printf(" \n     ____\n    |    |\n    |    O\n    |\n    |\n    |\n    |\n  __|__  "); break;
-			        
-			        case 2: printf("\n     ____\n    |    |\n    |    O\n    |    |\n    |\n    |\n    |\n  __|__  "); break;
-			        
-			        case 3: printf("\n     ____\n    |    |\n    |    O\n    |   /|\n    |\n    |\n    |\n  __|__  ");break;
-			        
-			        case 4: {
-					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
-					      printf("\\\n");
-					      printf("    |\n    |\n    |\n  __|__");
-						  }break;
-					
-					case 5: {
-					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
-					      printf("\\\n");
-					      printf("    |    |\n    |\n    |\n  __|__");
-						  }break;	  
-				    
-			        
-			        case 6: {
-					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
-					      printf("\\\n");
-					      printf("    |    |\n    |   /\n    |\n    |\n  __|__");
-						  }break;
-						  
-					case 7: {
-					      printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
-					      printf("\\\n");
-					      printf("    |    |\n    |   /");
-					      printf(" \\\n");
-					      printf("    |\n    |\n  __|__");
-						  }break;
-	            	}
 						  	  
-			        printf("Oportunidades Restantes: %d\n",8-fallos);
-				repetida=0;
-			        printf("\n\n");
+													printf("Oportunidades Restantes: %d\n",8-fallos);
+													repetida=0;
+													printf("\n\n");
 
 													
 												} while(letraEncontrada==0 && fallos != 8);
@@ -419,4 +347,44 @@ int main () {
 	} while ((opcion!='A') && (opcion!='B'));
 	return 0;
 
+}
+
+void dibujo (int fallos) {
+	switch(fallos){
+														
+		case 0: printf(" \n     ____\n    |    |\n    |\n    |\n    |\n    |\n  __|__  "); break;	
+													
+		case 1: printf(" \n     ____\n    |    |\n    |    O\n    |\n    |\n    |\n    |\n  __|__  "); break;
+											        
+		case 2: printf("\n     ____\n    |    |\n    |    O\n    |    |\n    |\n    |\n    |\n  __|__  "); break;
+											        
+		case 3: printf("\n     ____\n    |    |\n    |    O\n    |   /|\n    |\n    |\n    |\n  __|__  ");break;
+											        
+		case 4: {
+		 printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+		 printf("\\\n");
+		 printf("    |\n    |\n    |\n  __|__");
+		} break;
+													
+			case 5: {
+		 printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+		 printf("\\\n");
+		 printf("    |    |\n    |\n    |\n  __|__");
+		} break;	  
+												    
+											        
+		case 6: {
+		 printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+		printf("\\\n");
+		printf("    |    |\n    |   /\n    |\n    |\n  __|__");
+		} break;
+														  
+		case 7: {
+		printf("\n     ____\n    |    |\n    |    O\n    |   /|"); 
+		printf("\\\n");
+		printf("    |    |\n    |   /");
+		printf(" \\\n");
+		printf("    |\n    |\n  __|__");
+		} break;
+	}
 }
