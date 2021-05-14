@@ -10,7 +10,9 @@ struct equipo {
 	char nombre[100];
 	int sumaPuntos;
 };
-
+void barrasbajas( char palabras[], char palabraOriginal[]);
+int contador(char letra, char palabras[],int  acertado, int letraEncontrada, char palabraOriginal[], char letras[]);
+int contador2(char letra, char palabras[], int fallos, int letraEncontrada, char palabraOriginal[], char letras[]);
 void dibujo (int fallos);
 
 int main () {
@@ -63,6 +65,7 @@ int main () {
 								printf("B - EMPEZAR\n");
 								fflush(stdin);
 								scanf("%c", &solitario);
+								system("cls");
 								switch(solitario) {
 									case 'A' :
 										printf("-Para comenzar introduzca su usuario\n-A continuacion le aparecera una palabra que tiene que adivinar\n-Recuerda que solo tiene ocho intentos\n-Se realizaran rondas de palabras con diferentes niveles de dificultad\n-Seras el ganador si aciertas todas\n");
@@ -89,11 +92,7 @@ int main () {
 										    fallos=0;
 										    acertado=0;
 										    printf("------------Nivel %d----------\n",palabras[i].nivel);
-										    for(j = 0; j<strlen(palabras[i].palabra); j++) {
-											palabraOriginal[j] = palabras[i].palabra[j];
-											palabras[i].palabra[j]='_';
-
-										    }
+										    barrasbajas(palabras[i].palabra, palabraOriginal);
 											
 										    do {
 											palabraCompleta=1;
@@ -103,26 +102,11 @@ int main () {
 											    printf("Introduzca una letra:\n");
 											    fflush(stdin);
 											    scanf("%c", &letra);
+												
+											    acertado=contador( letra, palabras[i].palabra,acertado, letraEncontrada, palabraOriginal, letras);
+											    fallos=contador2(letra, palabras[i].palabra, fallos, letraEncontrada, palabraOriginal, letras);
 
-											    for(j = 0; j<strlen(palabras[i].palabra);j++) {
-												if(letra == palabraOriginal[j]) {
-												    letras[j]=1;
-												    letraEncontrada=1;
-												    if(palabras[i].palabra[j] !=letra) {
-												    	acertado++;
-												    	} else { 
-														repetida=1;
-													}
-												}
-
-											    }
-											    if(letraEncontrada == 0) {
-												for(j = 0; j<strlen(palabras[i].palabra); j++) {
-															printf("\t%c",palabras[i].palabra[j]);
-														}
-														printf("\n\n");
-														fallos++;
-											    }
+											 
 												printf("\n");
 												if (repetida==1) {
 													printf("Ya has puesto esa letra\n");
@@ -187,6 +171,7 @@ int main () {
 							printf("B - EMPEZAR\n");
 							fflush(stdin);
 							scanf("%c", &modoEquipos);
+						        system("cls");
 							switch(modoEquipos) {
 								case 'A' :
 									printf("-Para comenzar introduzca el nombre de ambos equipos\n-A continuacion les iran apareciendo palabras elegidas por el otro equipo que tendran que adivinar\n-Recordad que solo teneis ocho intentos\n-Se realizaran 3 rondas \n-El equipo que acierte mas palabras sera el ganador\n");
@@ -213,17 +198,14 @@ int main () {
 												printf("introduce una palabra\n");
 												fflush(stdin);
 												scanf("%s",palabra);
+											        system("cls");
 												puntos = 10;
 
 										
 											fallos=0;
 											acertado=0;
 
-											for(j = 0; j<strlen(palabra); j++) {
-											
-												palabraOriginal[j] = palabra[j];
-												palabra[j]='_';
-											}
+											barrasbajas(palabras[i].palabra, palabraOriginal);
 											do {
 											
 												palabraCompleta=1;
@@ -236,30 +218,9 @@ int main () {
 														fflush(stdin);
 														scanf("%c", &letra);
 
-													for(j = 0; j<strlen(palabra); j++) 
-													{
-														if(letra == palabraOriginal[j]) 
-														{
-															letras[j]=1;
-															letraEncontrada=1;
-															if(palabra[j] !=letra) {
-															acertado++;
-															} else {
-																repetida = 1;
-															}
-														}
-													}
-
-													if(letraEncontrada == 0) {	
+													acertado=contador( letra, palabras[i].palabra,acertado, letraEncontrada, palabraOriginal, letras);
+											                fallos=contador2(letra, palabras[i].palabra, fallos, letraEncontrada, palabraOriginal, letras);
 													
-														for(j = 0; j<strlen(palabra); j++){
-														
-															printf("\t%c",palabra[j]);			
-														}
-
-														printf("\n\n");
-														fallos++;
-													}
 													printf("\n"); 
 													if(repetida == 1) {
 														printf("Ya has puesto esa letra \n"); 
@@ -387,4 +348,36 @@ void dibujo (int fallos) {
 		printf("    |\n    |\n  __|__");
 		} break;
 	}
+}
+void barrasbajas( char palabras[], char palabraOriginal[]){
+	int j;
+	 for(j = 0; j<strlen(palabras); j++) {
+		palabraOriginal[j] = palabras[j];
+		palabras[j]='_';
+		}
+}
+int contador(char letra, char palabras[],int  acertado, int letraEncontrada, char palabraOriginal[], char letras[]) {
+    int j;
+
+    for(j = 0; j<strlen(palabras); j++) {
+        if(letra == palabraOriginal[j]) {
+            letras[j]=1;
+            letraEncontrada=1;
+            acertado++;
+        }
+
+    }
+    return acertado;
+
+}
+int contador2(char letra, char palabras[], int fallos, int letraEncontrada, char palabraOriginal[], char letras[]){
+	int j;
+	    if(letraEncontrada == 0) {
+        for(j = 0; j<strlen(palabras); j++) {
+            printf("\t%c",palabras[j]);
+        }
+        printf("\n\n");
+        fallos++;
+    }
+    return (fallos);
 }
