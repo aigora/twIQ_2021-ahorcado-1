@@ -10,7 +10,7 @@ struct equipo {
 	char nombre[100];
 	int sumaPuntos;
 };
-void barrasbajas( char palabras[], char palabraOriginal[]);
+
 int contador(char letra, char palabras[],int  acertado, int letraEncontrada, char palabraOriginal[], char letras[]);
 int contador2(char letra, char palabras[], int fallos, int letraEncontrada, char palabraOriginal[], char letras[]);
 void dibujo (int fallos);
@@ -92,7 +92,9 @@ int main () {
 										    fallos=0;
 										    acertado=0;
 										    printf("------------Nivel %d----------\n",palabras[i].nivel);
-										    barrasbajas(palabras[i].palabra, palabraOriginal);
+										    for(j = 0; j<strlen(palabras[i].palabra); j++) {
+											palabraOriginal[j] = palabras[i].palabra[j];
+											palabras[i].palabra[j]='_';
 											
 										    do {
 											palabraCompleta=1;
@@ -205,7 +207,9 @@ int main () {
 											fallos=0;
 											acertado=0;
 
-											barrasbajas(palabras[i].palabra, palabraOriginal);
+											for(j = 0; j<strlen(palabras[i].palabra); j++) {
+											palabraOriginal[j] = palabras[i].palabra[j];
+											palabras[i].palabra[j]='_';
 											do {
 											
 												palabraCompleta=1;
@@ -289,7 +293,7 @@ int main () {
 									printf("La opcion es incorrecta\n");
 								}
 									
-								
+							    
 							
 							} while(modoEquipos!='B');
 							break;
@@ -349,13 +353,7 @@ void dibujo (int fallos) {
 		} break;
 	}
 }
-void barrasbajas( char palabras[], char palabraOriginal[]){
-	int j;
-	 for(j = 0; j<strlen(palabras); j++) {
-		palabraOriginal[j] = palabras[j];
-		palabras[j]='_';
-		}
-}
+
 int contador(char letra, char palabras[],int  acertado, int letraEncontrada, char palabraOriginal[], char letras[]) {
     int j;
 
