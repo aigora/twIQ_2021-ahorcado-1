@@ -207,9 +207,9 @@ int main () {
 											fallos=0;
 											acertado=0;
 
-											for(j = 0; j<strlen(palabras[i].palabra); j++) {
-											palabraOriginal[j] = palabras[i].palabra[j];
-											palabras[i].palabra[j]='_';
+											for(j = 0; j<strlen(palabra); j++) {
+											palabraOriginal[j] = palabra[j];
+											palabra[j]='_';
 											do {
 											
 												palabraCompleta=1;
