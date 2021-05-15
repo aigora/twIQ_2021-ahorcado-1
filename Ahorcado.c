@@ -11,9 +11,10 @@ struct equipo {
 	int sumaPuntos;
 };
 
+void dibujo (int fallos);
 int contador(char letra, char palabras[],int  acertado, int letraEncontrada, char palabraOriginal[], char letras[]);
 int contador2(char letra, char palabras[], int fallos, int letraEncontrada, char palabraOriginal[], char letras[]);
-void dibujo (int fallos);
+
 
 int main () {
 	char opcion, modo, solitario, modoEquipos, equipo1, equipo2,A,B;
@@ -73,6 +74,10 @@ int main () {
 										break;
 									case 'B' :
 										
+										printf("Introduzca su nombre\n");
+										fflush(stdin);
+										scanf("%s",&nombre);
+										
 										fentrada=fopen("palabras.txt", "r");
 
 										if(fentrada==NULL) {
@@ -85,9 +90,7 @@ int main () {
 											i++;
 										}
 										fclose(fentrada);
-										printf("Introduzca su nombre\n");
-										fflush(stdin);
-										scanf("%s",&nombre);
+										
 										for(i=0;i<9;i++){
 										    fallos=0;
 										    acertado=0;
@@ -95,6 +98,7 @@ int main () {
 										    for(j = 0; j<strlen(palabras[i].palabra); j++) {
 											palabraOriginal[j] = palabras[i].palabra[j];
 											palabras[i].palabra[j]='_';
+										    }
 											
 										    do {
 											palabraCompleta=1;
@@ -210,6 +214,7 @@ int main () {
 											for(j = 0; j<strlen(palabra); j++) {
 											palabraOriginal[j] = palabra[j];
 											palabra[j]='_';
+											}
 											do {
 											
 												palabraCompleta=1;
@@ -238,6 +243,7 @@ int main () {
 													printf("Oportunidades Restantes: %d\n",8-fallos);
 													repetida=0;
 													printf("\n\n");
+													dibujo(fallos);
 
 													
 												} while(letraEncontrada==0 && fallos != 8);
@@ -365,7 +371,7 @@ int contador(char letra, char palabras[],int  acertado, int letraEncontrada, cha
         }
 
     }
-    return acertado;
+    return (acertado);
 
 }
 int contador2(char letra, char palabras[], int fallos, int letraEncontrada, char palabraOriginal[], char letras[]){
