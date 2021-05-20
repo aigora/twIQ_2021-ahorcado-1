@@ -182,7 +182,7 @@ int main () {
                                 printf("B - EMPEZAR\n");
                                 fflush(stdin);
                                 scanf("%c", &modoEquipos);
-                                system("clear");
+                                system("cls");
                                 switch(modoEquipos) {
                                     case 'A' :
                                         printf("-Para comenzar introduzca el nombre de ambos equipos\n-A continuacion les iran apareciendo palabras elegidas por el otro equipo que tendran que adivinar\n-Recordad que solo teneis ocho intentos\n-Se realizaran 3 rondas \n-El equipo que acierte mas palabras sera el ganador\n");
@@ -209,7 +209,7 @@ int main () {
                                                 printf("introduce una palabra\n");
                                                 fflush(stdin);
                                                 scanf("%s",palabra);
-                                                system("clear");
+                                                system("cls");
                                                 puntos = 10;
 
 
