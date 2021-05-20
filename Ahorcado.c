@@ -12,6 +12,7 @@ struct equipo {
 };
 
 // int contador(char letra, char palabras[],int  acertado, char palabraOriginal[], char letras[]);
+char lecturapalabras(struct datos palabras[]);
 int contador2(char palabras[], int fallos, int letraEncontrada);
 void dibujo (int fallos);
 
@@ -75,17 +76,7 @@ int main () {
 
                                     case 'B' :
 
-                                        fentrada=fopen("palabras.txt", "r");
-                                        if(fentrada==NULL) {
-                                            printf("ERROR: el fichero no se ha encontrado\n");
-                                            return 0;
-                                        }
-
-                                        i=0;
-                                        while(fscanf(fentrada,"%s %d %d",palabras[i].palabra,&palabras[i].nivel,&palabras[i].puntos)!=EOF) {
-                                            i++;
-                                        }
-                                        fclose(fentrada);
+                                        lecturapalabras(palabras);
                                         printf("Introduzca su nombre\n");
                                         fflush(stdin);
                                         scanf("%s",&nombre);
@@ -411,4 +402,21 @@ int contador2(char palabras[], int fallos, int letraEncontrada){
         fallos++;
     }
     return (fallos);
+}
+
+char lecturapalabras(struct datos palabras[]) {
+	int i;
+	FILE * fentrada;
+	fentrada=fopen("palabras.txt", "r");
+
+	if(fentrada==NULL) {
+		printf("ERROR: el fichero no se ha encontrado\n");
+	    return 0;
+	}
+
+	i=0;
+	while(fscanf(fentrada,"%s %d %f",palabras[i].palabra,&palabras[i].nivel,&palabras[i].puntos)!=EOF) {
+		i++;
+	}
+	fclose(fentrada);
 }
