@@ -179,7 +179,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                             if (fallos == 8) {
                                                 printf("GAME OVER\n");
                                             } else {
-                                                printf("�Enhorabuena has acertado!\n");
+                                                printf("¡Enhorabuena has acertado!\n");
                                                 sumaPuntos += palabras[aleatorio].puntos;
                                             }
 
@@ -331,7 +331,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                     printf("GAME OVER\n");
                                                 }
                                                 else {
-                                                    printf("�Enhorabuena has acertado!\n");
+                                                    printf("¡Enhorabuena has acertado!\n");
                                                     equipos[equipoJugador].sumaPuntos+=puntos;
                                                 }
                                             }
@@ -366,7 +366,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                 while((modo != 'A') && (modo != 'B'));
                 break;
             case 'B' :
-                printf("Gracias por jugar, ¡hasta pronto!");
+                printf("Gracias por jugar, Â¡hasta pronto!");
                 break;
             default:
                 printf("La opcion es incorrecta\n");
@@ -439,7 +439,7 @@ char lecturapalabras(struct datos palabras[]) {
 	}
 
 	i=0;
-	while(fscanf(fentrada,"%s %d %f %s",palabras[i].palabra,&palabras[i].nivel,&palabras[i].puntos, palabras[i].pista)!=EOF) {
+	while(fscanf(fentrada,"%s %d %d %s",palabras[i].palabra,&palabras[i].nivel,&palabras[i].puntos, palabras[i].pista)!=EOF) {
 		i++;
 	}
 	fclose(fentrada);
