@@ -9,6 +9,7 @@ struct datos {
     char palabra[100];
     int nivel;
     int puntos;
+    char pista[50];
 };
 struct equipo {
     char nombre[100];
@@ -26,6 +27,7 @@ int main () {
     struct equipo equipos[100];
     char palabraOriginal[100];
     char palabra[100];
+    char letrasfalladas[10];
     char letra, nombre;
     int posicion=0;
     int i,j,k,l,r;
@@ -108,6 +110,7 @@ printf(" //___// 							                                                        
                                             else if (i<6)  aleatorio =(int)10+rand()%10;
                                             else aleatorio =(int)20+rand()%10;
                                             printf("------------Nivel %d----------\n", palabras[aleatorio].nivel);
+                                            printf("Pista: %s\n", palabras[aleatorio].pista);
                                             for (j = 0; j < strlen(palabras[aleatorio].palabra); j++) {
                                                 palabraOriginal[j] = palabras[aleatorio].palabra[j];
                                                 palabras[aleatorio].palabra[j] = '_';
@@ -138,9 +141,13 @@ printf(" //___// 							                                                        
                                                     fallos = contador2(palabras[aleatorio].palabra, fallos, letraEncontrada);
 
                                                     printf("\n");
-                                                    if (repetida == 1) {
-                                                        printf("Ya has puesto esa letra\n");
-                                                    }
+                                                    if(letraEncontrada==0 && repetida != 1){
+											              letrasfalladas[fallos-1]=letra ;
+												        } else {
+												        	printf("\n");
+												          	printf("Ya has puesto esa letra\n");
+											        	}
+                                                    
                                                     printf("Letras Acertadas: %d\n", acertado);
 
                                                     printf("\n");
@@ -150,6 +157,12 @@ printf(" //___// 							                                                        
                                                     printf("\n\n");
 
                                                     dibujo(fallos);
+                                                    
+                                                    printf("\nLetras falladas: ");
+                                                    for(j=0; j<fallos;j++){
+											         	printf("%c ", letrasfalladas[j]);
+											        }
+											        printf("\n\n");
 
                                                 } while (letraEncontrada == 0 && fallos != 8);
 
@@ -175,7 +188,7 @@ printf(" //___// 							                                                        
                                             if (fallos == 8) {
                                                 printf("GAME OVER\n");
                                             } else {
-                                                printf("Â¡Enhorabuena has acertado!\n");
+                                                printf("¡Enhorabuena has acertado!\n");
                                                 sumaPuntos += palabras[aleatorio].puntos;
                                             }
 
@@ -220,7 +233,7 @@ printf(" //___// 							                                                        
                                         fflush(stdin);
                                         scanf("%s",equipos[1].nombre);
                                         for(k=0; k<3; k++) {
-                                            printf("------------Ronda %d----------\n",k);
+                                            printf("------------Ronda %d----------\n",k+1);
 
 
                                             for(l=0; l<2; l++) {
@@ -272,9 +285,14 @@ printf(" //___// 							                                                        
                                                         fallos = contador2(palabra, fallos, letraEncontrada);
 
                                                         printf("\n");
-                                                        if(repetida == 1) {
-                                                            printf("Ya has puesto esa letra \n");
-                                                        }
+                                                        
+                                                         if(letraEncontrada==0 && repetida != 1){
+											              letrasfalladas[fallos-1]=letra ;
+												        } else {
+												        	printf("\n");
+												          	printf("Ya has puesto esa letra\n");
+											        	}
+                                            
                                                         printf("Letras Acertadas: %d\n",acertado);
                                                         printf("\n");
 
@@ -283,6 +301,12 @@ printf(" //___// 							                                                        
 
                                                         printf("Oportunidades Restantes: %d\n",8-fallos);
                                                         repetida=0;
+                                                        
+                                                        printf("\nLetras falladas: ");
+                                                        for(j=0; j<fallos;j++){
+											         	printf("%c ", letrasfalladas[j]);
+											            }
+											            printf("\n\n");
                                                         printf("\n\n");
 
 
@@ -316,7 +340,7 @@ printf(" //___// 							                                                        
                                                     printf("GAME OVER\n");
                                                 }
                                                 else {
-                                                    printf("Â¡Enhorabuena has acertado!\n");
+                                                    printf("¡Enhorabuena has acertado!\n");
                                                     equipos[equipoJugador].sumaPuntos+=puntos;
                                                 }
                                             }
@@ -424,7 +448,7 @@ char lecturapalabras(struct datos palabras[]) {
 	}
 
 	i=0;
-	while(fscanf(fentrada,"%s %d %f",palabras[i].palabra,&palabras[i].nivel,&palabras[i].puntos)!=EOF) {
+	while(fscanf(fentrada,"%s %d %f %s",palabras[i].palabra,&palabras[i].nivel,&palabras[i].puntos, palabras[i].pista)!=EOF) {
 		i++;
 	}
 	fclose(fentrada);
