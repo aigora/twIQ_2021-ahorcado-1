@@ -43,7 +43,22 @@ int main () {
     srand(time(NULL));
 
     // Menu de entrada
-    printf ("----------AHORCADO----------\n");
+printf("                         ____                                                                      \n");
+printf("                        |    |                                                        _______        \n");
+printf("                        |____|  |___    ___   ___   ___   ___      ___|  ___         |       |        \n");
+printf("                        |    |  |   |  |   | |     |     |   |    |   | |   |        | X   X |                     \n");
+printf("                        |    |  |   |  |   | |     |     |   |    |   | |   |        |  ___  |                       \n");
+printf("                        |    |  |   |  |___| |     |___  |___|__  |___| |___|        |_______|                         \n");                                                 
+
+
+printf("      ____________________ , ,__                                                                           \n");
+printf("      / `---___________----_____|] - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - D      \n");                                           
+printf("     /_==o;;;;;;;;_______.:/                                                                       \n");
+printf("     ), ---.(_(__) / 				                                                              \n");
+printf("    // (..) ), ----				                                                                 \n");
+printf("   //___//   						                                                             \n");
+printf("  //___//							                                                              \n");
+printf(" //___// 							                                                               \n");  
 
     do {
 
@@ -160,7 +175,7 @@ int main () {
                                             if (fallos == 8) {
                                                 printf("GAME OVER\n");
                                             } else {
-                                                printf("¡Enhorabuena has acertado!\n");
+                                                printf("Â¡Enhorabuena has acertado!\n");
                                                 sumaPuntos += palabras[aleatorio].puntos;
                                             }
 
@@ -301,7 +316,7 @@ int main () {
                                                     printf("GAME OVER\n");
                                                 }
                                                 else {
-                                                    printf("¡Enhorabuena has acertado!\n");
+                                                    printf("Â¡Enhorabuena has acertado!\n");
                                                     equipos[equipoJugador].sumaPuntos+=puntos;
                                                 }
                                             }
@@ -336,7 +351,7 @@ int main () {
                 while((modo != 'A') && (modo != 'B'));
                 break;
             case 'B' :
-                printf("Gracias por jugar, ¡hasta pronto!");
+                printf("Gracias por jugar, Â¡hasta pronto!");
                 break;
             default:
                 printf("La opcion es incorrecta\n");
