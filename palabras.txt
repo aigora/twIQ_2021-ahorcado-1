@@ -13,6 +13,11 @@ boca 1 5
 apio 1 5
 flor 1 5
 cubo 1 5
+azul 1 5
+baul 1 5
+ramo 1 5
+sopa 1 5
+mago 1 5
 abrigo 2 10
 reloj 2  10
 cable 2  10
@@ -28,6 +33,11 @@ besos 2 10
 botas 2 10
 gafas 2 10
 luces 2 10
+raton 2 10
+pulpo 2 10
+papel 2 10
+marzo 2 10
+falda 2 10
 coleta 3 15
 sarten 3 15
 cuadro 3 15
@@ -43,3 +53,8 @@ planta 3 15
 pueblo 3 15
 cocina 3 15
 agosto 3 15
+jardin 3 15
+anillo 3 15
+sirena 3 15
+pincel 3 15
+solido 3 15
