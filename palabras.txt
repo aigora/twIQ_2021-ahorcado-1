@@ -5,7 +5,7 @@ azul 1 5 color
 baul 1 5 almacenamiento
 ramo 1 5 plantas
 sopa 1 5 comida
-mago 1 5 fruta
+gota 1 5 agua
 lujo 1 5 joyas
 hoja 1 5 plantas
 gato 1 5 animal
@@ -16,6 +16,8 @@ idea 1 5 pensamiento
 hilo 1 5 objeto
 fila 1 5 sucesion 
 cola 1 5 sucesion
+dado 1 5 objeto
+pera 1 5 fruta
 abrigo 2 10 ropa
 reloj 2  10 objeto
 cable 2  10 electricidad
@@ -34,6 +36,8 @@ ayuda 2 10 peticion
 zurdo 2 10 particularidad
 queso 2 10 comida
 brazo 2 10 cuerpo
+abeja 2 10 animal
+vacas 2 10 animales 
 coleta 3 15 pelo
 sarten 3 15 objeto
 cuadro 3 15 arte
@@ -52,3 +56,5 @@ anillo 3 15 joyas
 sirena 3 15 sonido
 pincel 3 15 arte
 solido 3 15 estado
+cuatro 3 15 numero
+pajaro 3 15 animal
