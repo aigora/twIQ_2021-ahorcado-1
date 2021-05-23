@@ -15,7 +15,7 @@ Vamos a realizar el clásico juego del ahorcado, versión digital, para poder ju
 - Se deberá indicar si se juega en solitario o en equipo. Cada usuario introducirá su nombre.
 - En caso de ser en solitario, será el programa el que se encargue de crear una palabra, que será adivinada por el usuario.
 - Si es por equipos, será un jugador del equipo contrario quien cree la palabra.
-- Solo se permitirán 7 fallos por palabra.
-- Consistirá en 3 rondas de 5 palabras. En cada ronda va aumentando el nivel de dificultad (en el primero se darán pistas,...).
+- Solo se permitirán 8 fallos por palabra.
+- Consistirá en distintas rondas en las que irá aumentando el nivel de dificultad.
 - El ganador será aquel que acierte más palabras. Aparecerá el nombre del ganador en pantalla.
-- En solitario si aciertas las 5 palabras de las 3 rondas el programa te felicitará.
+- Al final apareceran los puntos obtenidos por pantalla.
