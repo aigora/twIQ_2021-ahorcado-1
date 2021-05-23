@@ -8,6 +8,11 @@ idea 1 5
 hilo 1 5
 fila 1 5
 cola 1 5
+loro 1 5
+boca 1 5
+apio 1 5
+flor 1 5
+cubo 1 5
 abrigo 2 10
 reloj 2  10
 cable 2  10
@@ -18,6 +23,11 @@ ayuda 2 10
 zurdo 2 10
 queso 2 10
 brazo 2 10
+araña 2 10
+besos 2 10
+botas 2 10
+gafas 2 10
+luces 2 10
 coleta 3 15
 sarten 3 15
 cuadro 3 15
@@ -28,3 +38,8 @@ hervir 3 15
 españa 3 15
 chicle 3 15
 grumo 3 15
+orbita 3 15
+planta 3 15
+pueblo 3 15
+cocina 3 15
+agosto 3 15
