@@ -60,7 +60,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
         fflush(stdin);
         scanf("%c", &opcion);
         switch(opcion) {
-            case 'A' :
+            case 'A'|'a' :
 
                 printf("Bienvenid@ al ahorcado\n");
                 do {
@@ -76,7 +76,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                     switch(modo) {
 
 
-                        case 'A' :
+                        case 'A'|'a' :
                             do {
                                 printf("A - Instrucciones\n");
                                 printf("B - EMPEZAR\n");
@@ -84,11 +84,11 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 scanf("%c", &solitario);
                                 system("cls");
                                 switch(solitario) {
-                                    case 'A' :
+                                    case 'A'|'a' :
                                         printf("-Para comenzar introduzca su usuario\n-A continuacion le aparecera una palabra que tiene que adivinar\n-Recuerda que solo tiene ocho intentos\n-Se realizaran rondas de palabras con diferentes niveles de dificultad\n-Seras el ganador si aciertas todas\n");
                                         break;
 
-                                    case 'B' :
+                                    case 'B'|'b' :
 
                                         lecturapalabras(palabras);
                                         printf("Introduzca su nombre\n");
@@ -200,11 +200,11 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 }
 
 
-                            } while(solitario!='B');
+                            } while(solitario!='B'|'b');
                             break;
 
 
-                        case 'B' :
+                        case 'B'|'b' :
                             do {
                                 printf("A - Instrucciones\n");
                                 printf("B - EMPEZAR\n");
@@ -212,11 +212,11 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 scanf("%c", &modoEquipos);
                                 system("cls");
                                 switch(modoEquipos) {
-                                    case 'A' :
+                                    case 'A'|'b' :
                                         printf("-Para comenzar introduzca el nombre de ambos equipos\n-A continuacion les iran apareciendo palabras elegidas por el otro equipo que tendran que adivinar\n-Recordad que solo teneis ocho intentos\n-Se realizaran 3 rondas \n-El equipo que acierte mas palabras sera el ganador\n");
 
                                         break;
-                                    case 'B' :
+                                    case 'B'|'b' :
                                         printf("Introduce el nombre del equipo 1\n");
                                         fflush(stdin);
                                         scanf("%s",equipos[0].nombre);
@@ -295,9 +295,9 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                         
                                                         printf("\nLetras falladas: ");
                                                         for(j=0; j<fallos;j++){
-											         	printf("%c ", letrasfalladas[j]);
-											            }
-											            printf("\n\n");
+								printf("%c ", letrasfalladas[j]);
+								}
+							printf("\n\n");
                                                         printf("\n\n");
 
 
@@ -354,7 +354,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 }
 
 
-                            } while(modoEquipos != 'B');
+                            } while(modoEquipos != 'B'|'b');
                             break;
 
                         default:
@@ -363,7 +363,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
 
 
                 }
-                while((modo != 'A') && (modo != 'B'));
+                while((modo != 'A'|'a') && (modo != 'B'|'b'));
                 break;
             case 'B' :
                 printf("Gracias por jugar, Â¡hasta pronto!");
@@ -371,7 +371,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
             default:
                 printf("La opcion es incorrecta\n");
         }
-    } while ((opcion != 'A') && (opcion != 'B'));
+    } while ((opcion != 'A'|'a') && (opcion != 'B'|'b'));
     return 0;
 
 }
