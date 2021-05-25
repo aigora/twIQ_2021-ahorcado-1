@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-
+// Definición de estructuras
 struct datos {
     char palabra[100];
     int nivel;
@@ -16,11 +16,12 @@ struct equipo {
     int sumaPuntos;
 };
 
-
+// Prototipo de funciones
 char lecturapalabras(struct datos palabras[]);
 int contador2(char palabras[], int fallos, int letraEncontrada);
 void dibujo (int fallos);
 
+// Declaración de variables
 int main () {
     char opcion, modo, solitario, modoEquipos, equipo1, equipo2,A,B;
     struct datos palabras[100];
@@ -44,7 +45,7 @@ int main () {
     FILE * fpuntos;
     srand(time(NULL));
 
-    // Menu de entrada
+    // Menu de entrada y Programa 
 printf("                         ____                                                                      \n");
 printf("                        |    |                                                        _______        \n");
 printf("                        |____|  |___    ___   ___   ___   ___      ___|  ___         |       |        \n");
@@ -62,7 +63,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
         switch(opcion) {
             case 'A' :
 
-                printf("---------BIENVEVIDO AL JUEGO DEL AHORCADO----------- \n\n");
+                printf("---------BIENVENIDO AL JUEGO DEL AHORCADO----------- \n\n");
                 do {
 
 
@@ -379,6 +380,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
     return 0;
 
 }
+//Funciones
 
 void dibujo (int fallos) {
     switch(fallos){
