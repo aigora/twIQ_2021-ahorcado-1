@@ -10,7 +10,7 @@ lujo 1 5 joyas
 hoja 1 5 plantas
 gato 1 5 animal
 bata 1 5 ropa
-cuña 1 5 objeto
+boca 1 5 cuerpo
 cruz 1 5 religion
 idea 1 5 pensamiento
 hilo 1 5 objeto
@@ -45,7 +45,7 @@ lengua 3 15 cuerpo
 cometa 3 15 aire
 alarma 3 15 sonido
 hervir 3 15 vapor
-españa 3 15 pais
+italia 3 15 pais
 chicle 3 15 chuche
 grumo 3 15 comida
 pueblo 3 15 lugar
