@@ -184,14 +184,11 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                 printf("Enhorabuena has acertado!\n");
                                                 sumaPuntos += palabras[aleatorio].puntos;
                                             }
-					}
-
-                                       
-                                    
-                                        
+		 
   
-                                         printf("%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
-                                        
+                                        }
+                                        printf("Has obtenido %d puntos de un total de 90 puntos\n",sumaPuntos);
+                                        return 0;                                        
                                        
 
                                        
@@ -345,7 +342,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                         }
                                         for(r=0; r<2; r++) {
                                             printf(" %s has obtenido %d puntos\n",equipos[r].nombre,equipos[r].sumaPuntos);
-                                            fprintf(fpuntos,"%s has obtenido:%d ptos de un total de 30 puntos",equipos[r].nombre,equipos[r].sumaPuntos);
+                                            fprintf(fpuntos,"%s has obtenido:%d puntos de un total de 30 puntos\n",equipos[r].nombre,equipos[r].sumaPuntos);
                                         }
 
                                         fclose(fpuntos);
