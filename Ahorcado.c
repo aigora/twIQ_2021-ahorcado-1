@@ -16,7 +16,7 @@ struct equipo {
     int sumaPuntos;
 };
 
-// int contador(char letra, char palabras[],int  acertado, char palabraOriginal[], char letras[]);
+
 char lecturapalabras(struct datos palabras[]);
 int contador2(char palabras[], int fallos, int letraEncontrada);
 void dibujo (int fallos);
@@ -54,15 +54,15 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
 
 
     do {
-
+        system("COLOR 5F");
         printf("A - Jugar\n");
         printf("B - Salir del juego\n");
         fflush(stdin);
         scanf("%c", &opcion);
         switch(opcion) {
-            case 'A'|'a' :
+            case 'A' :
 
-                printf("Bienvenid@ al ahorcado\n");
+                printf("---------BIENVEVIDO AL JUEGO DEL AHORCADO----------- \n\n");
                 do {
 
 
@@ -76,19 +76,21 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                     switch(modo) {
 
 
-                        case 'A'|'a' :
+                        case 'A' :
                             do {
                                 printf("A - Instrucciones\n");
                                 printf("B - EMPEZAR\n");
                                 fflush(stdin);
                                 scanf("%c", &solitario);
                                 system("cls");
+                                system("PAUSE");
+                                system("COLOR 8F");
                                 switch(solitario) {
-                                    case 'A'|'a' :
+                                    case 'A' :
                                         printf("-Para comenzar introduzca su usuario\n-A continuacion le aparecera una palabra que tiene que adivinar\n-Recuerda que solo tiene ocho intentos\n-Se realizaran rondas de palabras con diferentes niveles de dificultad\n-Seras el ganador si aciertas todas\n");
                                         break;
 
-                                    case 'B'|'b' :
+                                    case 'B' :
 
                                         lecturapalabras(palabras);
                                         printf("Introduzca su nombre\n");
@@ -97,9 +99,9 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                         for(i=0;i<9;i++) {
                                             fallos = 0;
                                             acertado = 0;
-                                            if (i<3)  aleatorio = (int)rand()%10;
-                                            else if (i<6)  aleatorio =(int)10+rand()%10;
-                                            else aleatorio =(int)20+rand()%10;
+                                            if (i<3)  aleatorio = (int)rand()%20;
+                                            else if (i<6)  aleatorio =(int)20+rand()%20;
+                                            else aleatorio =(int)40+rand()%20;
                                             printf("------------Nivel %d----------\n", palabras[aleatorio].nivel);
                                             printf("Pista: %s\n", palabras[aleatorio].pista);
                                             for (j = 0; j < strlen(palabras[aleatorio].palabra); j++) {
@@ -128,7 +130,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                         }
 
                                                     }
-                                                    // acertado = contador(letra, palabras[i].palabra,acertado, palabraOriginal, letras);
+                                                    
                                                     fallos = contador2(palabras[aleatorio].palabra, fallos, letraEncontrada);
 
                                                     printf("\n");
@@ -179,7 +181,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                             if (fallos == 8) {
                                                 printf("GAME OVER\n");
                                             } else {
-                                                printf("¡Enhorabuena has acertado!\n");
+                                                printf("Enhorabuena has acertado!\n");
                                                 sumaPuntos += palabras[aleatorio].puntos;
                                             }
 
@@ -200,23 +202,25 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 }
 
 
-                            } while(solitario!='B'|'b');
+                            } while(solitario!='B');
                             break;
 
 
-                        case 'B'|'b' :
+                        case 'B' :
                             do {
                                 printf("A - Instrucciones\n");
                                 printf("B - EMPEZAR\n");
                                 fflush(stdin);
                                 scanf("%c", &modoEquipos);
                                 system("cls");
+                                system("PAUSE");
+                                system("COLOR 9F");
                                 switch(modoEquipos) {
-                                    case 'A'|'b' :
+                                    case 'A' :
                                         printf("-Para comenzar introduzca el nombre de ambos equipos\n-A continuacion les iran apareciendo palabras elegidas por el otro equipo que tendran que adivinar\n-Recordad que solo teneis ocho intentos\n-Se realizaran 3 rondas \n-El equipo que acierte mas palabras sera el ganador\n");
 
                                         break;
-                                    case 'B'|'b' :
+                                    case 'B' :
                                         printf("Introduce el nombre del equipo 1\n");
                                         fflush(stdin);
                                         scanf("%s",equipos[0].nombre);
@@ -272,7 +276,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                             }
 
                                                         }
-                                                        // acertado=contador( letra, palabras[i].palabra,acertado, palabraOriginal, letras);
+                                                        
                                                         fallos = contador2(palabra, fallos, letraEncontrada);
 
                                                         printf("\n");
@@ -295,9 +299,9 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                         
                                                         printf("\nLetras falladas: ");
                                                         for(j=0; j<fallos;j++){
-								printf("%c ", letrasfalladas[j]);
-								}
-							printf("\n\n");
+											         	printf("%c ", letrasfalladas[j]);
+											            }
+											            printf("\n\n");
                                                         printf("\n\n");
 
 
@@ -331,7 +335,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                     printf("GAME OVER\n");
                                                 }
                                                 else {
-                                                    printf("¡Enhorabuena has acertado!\n");
+                                                    printf("Enhorabuena has acertado!\n");
                                                     equipos[equipoJugador].sumaPuntos+=puntos;
                                                 }
                                             }
@@ -354,7 +358,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 }
 
 
-                            } while(modoEquipos != 'B'|'b');
+                            } while(modoEquipos != 'B');
                             break;
 
                         default:
@@ -363,15 +367,15 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
 
 
                 }
-                while((modo != 'A'|'a') && (modo != 'B'|'b'));
+                while((modo != 'A') && (modo != 'B'));
                 break;
             case 'B' :
-                printf("Gracias por jugar, Â¡hasta pronto!");
+                printf("Gracias por jugar, hasta pronto!");
                 break;
             default:
                 printf("La opcion es incorrecta\n");
         }
-    } while ((opcion != 'A'|'a') && (opcion != 'B'|'b'));
+    } while ((opcion != 'A') && (opcion != 'B'));
     return 0;
 
 }
