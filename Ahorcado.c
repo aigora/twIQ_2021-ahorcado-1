@@ -184,21 +184,17 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                 printf("Enhorabuena has acertado!\n");
                                                 sumaPuntos += palabras[aleatorio].puntos;
                                             }
+					}
 
-                                        }
-                                        printf("Has obtenido %d puntos\n",sumaPuntos);
-                                        fsalida = fopen("prueba.txt","w");
-                                        if(fsalida == NULL) {
-                                            printf("Error en la apertura del fichero\n");
-                                            return 0;
-                                        }
+                                       
+                                    
+                                        
+  
                                          printf("%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
-                                        fprintf(fsalida,"%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
+                                        
                                        
 
-                                        fclose(fsalida);
-                                        return 0;
-
+                                       
                                     default:
                                         printf("la opcion es incorrecta\n");
                                 }
@@ -348,8 +344,8 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                             return 0;
                                         }
                                         for(r=0; r<2; r++) {
-                                            printf("Has obtenido %d puntos\n",equipos[r].sumaPuntos);
-                                            fprintf(fpuntos,"%s has obtenido:%d ptos de un total de 90 puntos",equipos[r].nombre,equipos[r].sumaPuntos);
+                                            printf(" %s has obtenido %d puntos\n",equipos[r].nombre,equipos[r].sumaPuntos);
+                                            fprintf(fpuntos,"%s has obtenido:%d ptos de un total de 30 puntos",equipos[r].nombre,equipos[r].sumaPuntos);
                                         }
 
                                         fclose(fpuntos);
