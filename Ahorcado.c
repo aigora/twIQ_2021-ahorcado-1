@@ -62,7 +62,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
         switch(opcion) {
             case 'A' :
 
-                printf("---------BIENVEVIDO AL JUEGO DEL AHORCADO----------- \n\n");
+                printf("---------BIENVENIDO AL JUEGO DEL AHORCADO----------- \n\n");
                 do {
 
 
@@ -187,12 +187,14 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
 
                                         }
                                         printf("Has obtenido %d puntos\n",sumaPuntos);
-                                        fsalida = fopen("salida.txt","w");
+                                        fsalida = fopen("prueba.txt","w");
                                         if(fsalida == NULL) {
                                             printf("Error en la apertura del fichero\n");
                                             return 0;
                                         }
+                                         printf("%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
                                         fprintf(fsalida,"%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
+                                       
 
                                         fclose(fsalida);
                                         return 0;
