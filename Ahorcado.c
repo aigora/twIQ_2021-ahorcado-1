@@ -187,17 +187,8 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                             }
 
                                         }
-                                        printf("Has obtenido %d puntos\n",sumaPuntos);
-                                        fsalida = fopen("salida.txt","w");
-                                        if(fsalida == NULL) {
-                                            printf("Error en la apertura del fichero\n");
-                                            return 0;
-                                        }
-                                        fprintf(fsalida,"%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
-
-                                        fclose(fsalida);
-                                        return 0;
-
+                                        printf("%s has obtenido: %d puntos de un total de 90 puntos\n",nombre,sumaPuntos);
+                                        
                                     default:
                                         printf("la opcion es incorrecta\n");
                                 }
