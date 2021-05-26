@@ -184,7 +184,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                             }
 
                                             if (fallos == 8) {
-                                                printf("GAME OVER\n");
+                                                printf("GAME OVER\a\n");
                                             } else {
                                                 printf("Enhorabuena has acertado!\n");
                                                 sumaPuntos += palabras[aleatorio].puntos;
@@ -335,7 +335,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                 }
 
                                                 if(fallos == 8) {
-                                                    printf("GAME OVER\n");
+                                                    printf("GAME OVER\a\n");
                                                 }
                                                 else {
                                                     printf("Enhorabuena has acertado!\n");
