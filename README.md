@@ -11,7 +11,7 @@ Vamos a realizar el clásico juego del ahorcado, versión digital, para poder ju
 ## Objetivos del trabajo
 
 - Dar visibilidad a los juegos de nuestra infancia, dándole un toque más moderno.
-- Crear una versión entretenida para entretener a la gente.
+- Crear una versión entretenida para divertir a la gente.
 - Se deberá indicar si se juega en solitario o en equipo. Cada usuario introducirá su nombre.
 - En caso de ser en solitario, será el programa el que se encargue de crear una palabra, que será adivinada por el usuario.
 - Si es por equipos, será un jugador del equipo contrario quien cree la palabra.
