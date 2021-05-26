@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-
+// Definición de estructuras
 struct datos {
     char palabra[100];
     int nivel;
@@ -16,11 +16,12 @@ struct equipo {
     int sumaPuntos;
 };
 
-
+// Prototipo de funciones
 char lecturapalabras(struct datos palabras[]);
 int contador2(char palabras[], int fallos, int letraEncontrada);
 void dibujo (int fallos);
 
+// Declaración de variables
 int main () {
     char opcion, modo, solitario, modoEquipos, equipo1, equipo2,A,B;
     struct datos palabras[100];
@@ -44,7 +45,7 @@ int main () {
     FILE * fpuntos;
     srand(time(NULL));
 
-    // Menu de entrada
+   // Menu de entrada y Programa
 printf("                         ____                                                                      \n");
 printf("                        |    |                                                        _______        \n");
 printf("                        |____|  |___    ___   ___   ___   ___      ___|  ___         |       |        \n");
@@ -61,6 +62,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
         scanf("%c", &opcion);
         switch(opcion) {
             case 'A' :
+	    case 'a':
 
                 printf("---------BIENVENIDO AL JUEGO DEL AHORCADO----------- \n\n");
                 do {
@@ -77,6 +79,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
 
 
                         case 'A' :
+		        case 'a':
                             do {
                                 printf("A - Instrucciones\n");
                                 printf("B - EMPEZAR\n");
@@ -87,10 +90,12 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 system("COLOR 8F");
                                 switch(solitario) {
                                     case 'A' :
+				    case 'a':
                                         printf("-Para comenzar introduzca su usuario\n-A continuacion le aparecera una palabra que tiene que adivinar\n-Recuerda que solo tiene ocho intentos\n-Se realizaran rondas de palabras con diferentes niveles de dificultad\n-Seras el ganador si aciertas todas\n");
                                         break;
 
                                     case 'B' :
+				    case 'b':
 
                                         lecturapalabras(palabras);
                                         printf("Introduzca su nombre\n");
@@ -184,21 +189,14 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                 printf("Enhorabuena has acertado!\n");
                                                 sumaPuntos += palabras[aleatorio].puntos;
                                             }
-
+		 
+  
                                         }
-                                        printf("Has obtenido %d puntos\n",sumaPuntos);
-                                        fsalida = fopen("prueba.txt","w");
-                                        if(fsalida == NULL) {
-                                            printf("Error en la apertura del fichero\n");
-                                            return 0;
-                                        }
-                                         printf("%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
-                                        fprintf(fsalida,"%s has obtenido:%d ptos de un total de 90 puntos",nombre,sumaPuntos);
+                                        printf("Has obtenido %d puntos de un total de 90 puntos\n",sumaPuntos);
+                                        return 0;                                        
                                        
 
-                                        fclose(fsalida);
-                                        return 0;
-
+                                       
                                     default:
                                         printf("la opcion es incorrecta\n");
                                 }
@@ -209,6 +207,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
 
 
                         case 'B' :
+		        case 'b':
                             do {
                                 printf("A - Instrucciones\n");
                                 printf("B - EMPEZAR\n");
@@ -219,10 +218,12 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 system("COLOR 9F");
                                 switch(modoEquipos) {
                                     case 'A' :
+				    case 'a':
                                         printf("-Para comenzar introduzca el nombre de ambos equipos\n-A continuacion les iran apareciendo palabras elegidas por el otro equipo que tendran que adivinar\n-Recordad que solo teneis ocho intentos\n-Se realizaran 3 rondas \n-El equipo que acierte mas palabras sera el ganador\n");
 
                                         break;
                                     case 'B' :
+				    case 'b':
                                         printf("Introduce el nombre del equipo 1\n");
                                         fflush(stdin);
                                         scanf("%s",equipos[0].nombre);
@@ -348,8 +349,8 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                             return 0;
                                         }
                                         for(r=0; r<2; r++) {
-                                            printf("Has obtenido %d puntos\n",equipos[r].sumaPuntos);
-                                            fprintf(fpuntos,"%s has obtenido:%d ptos de un total de 90 puntos",equipos[r].nombre,equipos[r].sumaPuntos);
+                                            printf(" %s has obtenido %d puntos\n",equipos[r].nombre,equipos[r].sumaPuntos);
+                                            fprintf(fpuntos,"%s has obtenido:%d puntos de un total de 30 puntos\n",equipos[r].nombre,equipos[r].sumaPuntos);
                                         }
 
                                         fclose(fpuntos);
@@ -360,7 +361,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                 }
 
 
-                            } while(modoEquipos != 'B');
+                            } while(modoEquipos != 'B' && modoEquipos != 'b');
                             break;
 
                         default:
@@ -369,18 +370,20 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
 
 
                 }
-                while((modo != 'A') && (modo != 'B'));
+                while((modo != 'A') && (modo != 'B') && (opcion != 'a') && (opcion != 'b'));
                 break;
-            case 'B' :
+            case 'B' :   
+	    case 'b':
                 printf("Gracias por jugar, hasta pronto!");
                 break;
             default:
                 printf("La opcion es incorrecta\n");
         }
-    } while ((opcion != 'A') && (opcion != 'B'));
+    } while ((opcion != 'A') && (opcion != 'B')&& (opcion != 'a') && (opcion != 'b'));
     return 0;
 
 }
+// Funciones
 
 void dibujo (int fallos) {
     switch(fallos){
