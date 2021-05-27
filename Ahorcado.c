@@ -131,6 +131,8 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                                 acertado++;
                                                             } else {
                                                                 repetida = 1;
+								    printf("\n");
+								    printf("Ya has puesto esa letra\n");
                                                             }
                                                         }
 
@@ -141,10 +143,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                     printf("\n");
                                                     if(letraEncontrada==0 && repetida != 1){
 											              letrasfalladas[fallos-1]=letra ;
-												        } else {
-												        	printf("\n");
-												          	printf("Ya has puesto esa letra\n");
-											        	}
+												        } 
                                                     
                                                     printf("Letras Acertadas: %d\n", acertado);
 
@@ -275,6 +274,8 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                                     acertado++;
                                                                 } else {
                                                                     repetida = 1;
+									printf("\n");
+												          	printf("Ya has puesto esa letra\n");
                                                                 }
                                                             }
 
@@ -286,11 +287,7 @@ printf("                        |    |  |   |  |___| |     |___  |___|__  |___| 
                                                         
                                                          if(letraEncontrada==0 && repetida != 1){
 											              letrasfalladas[fallos-1]=letra ;
-												        } else {
-												        	printf("\n");
-												          	printf("Ya has puesto esa letra\n");
-											        	}
-                                            
+												        } 
                                                         printf("Letras Acertadas: %d\n",acertado);
                                                         printf("\n");
 
