@@ -7,7 +7,7 @@ ramo 1 5 flores
 sopa 1 5 comida
 gota 1 5 liquido
 lujo 1 5 joyas
-hoja 1 5 otoño
+hoja 1 5 otonio
 gato 1 5 animal
 bata 1 5 ropa
 boca 1 5 comer
